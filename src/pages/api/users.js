@@ -320,7 +320,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ message: "No results found" });
     }
 
-    res.status(200).json(filteredUsers2);
+    res.status(200).json(filteredUsers);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch users" });
   }
