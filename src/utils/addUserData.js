@@ -300,3 +300,4 @@ const addUserData = async () => {
 };
 
 addUserData().catch((err) => console.error(err));
+export { userData };

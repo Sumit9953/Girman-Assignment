@@ -3,8 +3,7 @@ const { username, password } = process.env;
 
 console.log(username, password);
 
-const MONGODB_URI =
-  `mongodb+srv://sumit6:sumit2011@nextuserdatabase.ilrg5.mongodb.net/userDatabase?retryWrites=true&w=majority&appName=NextUserDatabase`;
+const MONGODB_URI = `mongodb+srv://sumit6:sumit2011@nextuserdatabase.ilrg5.mongodb.net/userDatabase?retryWrites=true&w=majority&appName=NextUserDatabase`;
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -12,25 +11,14 @@ if (!MONGODB_URI) {
   );
 }
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
 async function connectToDatabase() {
-  if (cached.conn) {
-    return cached.conn;
+  try {
+    const connection = await mongoose.connect(MONGODB_URI);
+    return connection;
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+    throw error;
   }
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
-      return mongoose;
-    });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
 }
 
 export default connectToDatabase;
