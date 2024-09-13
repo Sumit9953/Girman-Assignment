@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
-const InputComp = () => {
+const InputComp = ({shadow = true}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
@@ -13,7 +13,7 @@ const InputComp = () => {
   };
 
   return (
-    <div className="w-full flex items-center bg-white shadow-md px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+    <div className={`w-full flex items-center bg-white ${shadow && `shadow-md`}  px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300`}>
       <IoSearch color="gray" />
       <input
         type="text"

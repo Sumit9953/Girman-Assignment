@@ -7,8 +7,11 @@ import InputComp from "../InputComp";
 
 const Navbar = () => {
   const router = useRouter();
+  const handleContactClick = () => {
+    window.location.href = "mailto:contact@girmantech.com";
+  };
   return (
-    <div className="bg-white border-b border-gray-300 md:h-20 text-black">
+    <div className="bg-white border-b border-gray-300 shadow-md fixed top-0 w-full z-10 text-black">
       <nav className="mx-auto max-w-screen-xl p-4">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div
@@ -26,29 +29,27 @@ const Navbar = () => {
 
           {router.pathname === "/search" ? (
             <div className="md:w-[40%] mt-5 md:mt-0">
-              <InputComp />
+              <InputComp shadow={false} />
             </div>
           ) : (
-            <div className="space-x-4 flex">
+            <div className="space-x-4 mt-4 md:mt-0 p-2 md:p-0 flex">
               <Link href="/">
-                <h1 className="hover:text-black text-blue-500 font-semibold font-sans uppercase">
+                <h1 className="hover:text-black text-blue-500 font-semibold font-sans cursor-pointer uppercase">
                   Search
                 </h1>
               </Link>
               <Link href="https://girmantech.com">
-                <h1 className="hover:text-blue-500 uppercase">Website</h1>
+                <h1 className="hover:text-blue-500 cursor-pointer uppercase">Website</h1>
               </Link>
               <Link href="https://www.linkedin.com/company/girmantech/">
-                <h1 className="hover:text-blue-500 uppercase">LinkedIn</h1>
+                <h1 className="hover:text-blue-500 cursor-pointer uppercase">LinkedIn</h1>
               </Link>
-              <a
-                target="_blank"
-                rel="nofollow"
-                href='mailto:contact@girmantech.com'
-                className="hover:text-blue-500 uppercase"
+              <div
+                onClick={() => router.push('mailto:email@yahoo.com')}
+                className="hover:text-blue-500 cursor-pointer uppercase"
               >
                 Contact
-              </a>
+              </div>
             </div>
           )}
         </div>

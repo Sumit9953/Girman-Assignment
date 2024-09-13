@@ -5,7 +5,7 @@ import { NotFound } from "../image";
 const NotFoundData = () => {
   return (
     <div className="flex w-full justify-center items-center">
-      <Image src={NotFound} alt="404 not found" />
+      <Image className="mt-10" src={NotFound} alt="404 not found" />
     </div>
   );
 };
