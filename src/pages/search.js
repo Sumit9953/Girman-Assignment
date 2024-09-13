@@ -31,7 +31,7 @@ export default function SearchResults() {
 
   return (
     <div className="flex flex-col items-center p-8 min-h-[100vh] bg-gradient-to-b from-white to-lightBlue">
-      <div className="w-full mt-32 md:mt-24 xl:max-w-screen-xl gap-5 flex flex-col md:flex-row flex-wrap">
+      <div className="w-full mt-32 md:mt-24 xl:max-w-screen-xl gap-5 flex flex-col md:flex-row items-center justify-center flex-wrap">
         {results.length > 0 ? (
           results.map((user, index) => <UserCard user={user} index={index} />)
         ) : (
