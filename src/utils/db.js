@@ -1,9 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+const { username, password } = process.env;
 
-const MONGODB_URI = "mongodb+srv://sumit61:sumit2011@nextuserdatabase.ilrg5.mongodb.net/userDatabase?retryWrites=true&w=majority";
+console.log(username, password);
+
+const MONGODB_URI =
+  `mongodb+srv://sumit6:sumit2011@nextuserdatabase.ilrg5.mongodb.net/userDatabase?retryWrites=true&w=majority&appName=NextUserDatabase`;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGO_URI environment variable in .env.local');
+  throw new Error(
+    "Please define the MONGO_URI environment variable in .env.local"
+  );
 }
 
 let cached = global.mongoose;
@@ -18,10 +24,7 @@ async function connectToDatabase() {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
       return mongoose;
     });
   }
