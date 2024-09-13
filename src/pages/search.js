@@ -26,7 +26,8 @@ export default function SearchResults() {
 
   console.log("query", query);
   console.log("results", results);
-  
+
+
 
   return (
     <div className="flex flex-col items-center p-8 min-h-[100vh] bg-gradient-to-b from-white to-lightBlue">
